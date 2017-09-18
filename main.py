@@ -37,24 +37,30 @@ form = '''
 		<input type="submit" value="Encrypt" />
       </form>
       <br>
-      <h2>Caesar not secure enough? <a href="./vigenere">click here</a> for Vigenere Cipher instead.</h2>
+      <h2>{2}? <a href="{4}">click here</a> for {3} Cipher instead.</h2>
     </body>
 </html>
 '''
 
 @app.route('/')
 def index():
-	return form.format('','Rotate by')
+	return form.format('','Rotate by','Caesar not secure enough','Vigenere','./vigenere')
 	
 @app.route('/', methods=['POST'])
 def encrypt():
 	rot = request.form['rot']
 	text = request.form['text']
 	message = rotate_string(text, rot)
-	return form.format(message,'Rotate by')
+	return form.format(message,'Rotate by','Caesar not secure enough','Vigenere','.vigenere')
+
+@app.route('/vigenere', methods=['GET'])
+def blank_vig():
+	return form.format('','Key','Vigenere too secure','Caesar','..')
 
 @app.route('/vigenere', methods=['POST'])
 def vigenere():
-	return "need to implement functionality"
+	key = request.form['rot']
+	text = request.form['text']
+	return text
 	
 app.run()
