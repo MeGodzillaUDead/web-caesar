@@ -35,6 +35,7 @@ form = '''
 		</label>
 		<textarea name="text">{0}</textarea>
 		<input type="submit" value="Encrypt" />
+		<input type="reset" value="Clear Text" />
       </form>
       <br>
       <h2>{2}? <a href="{4}">click here</a> for {3} Cipher instead.</h2>
